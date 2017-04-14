@@ -1,12 +1,12 @@
 angular.module('myApp', ['ui.router'])
 
   .config(function($urlRouterProvider, $stateProvider) {
-    $urlRouterProvider.when('', '/');
+    $urlRouterProvider.otherwise('/');
         $stateProvider
         .state('home', {
           url: '/',
-          templateUrl: "./views/main.html",
-          controller: "mainCtrl"
+          templateUrl: "./views/home.html",
+          controller: "homeCtrl"
         })
         .state('sync', {
           url: '/sync',

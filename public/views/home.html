@@ -1,0 +1,29 @@
+<header>
+
+<a ui-sref="home">home</a>
+  <div class="menu">
+      <a class="item" ui-sref="sync">sync</a>
+      <a class="item" ui-sref="profile">profile</a>
+      <a class="item" ui-sref="about">about</a>
+      <a class="item">Login</a>
+      <a class="item">Logout</a>
+  </div>
+</header>
+<div class="container">
+  <div class="row">
+    <h1>Hello! {{user}}</h1>
+    <!-- <form ng-submit="loginLocal(username, password)">
+      <div class="six columns">
+        <input class="u-full-width" placeholder="username" ng-model="username"/>
+        <input class="u-full-width" placeholder="password" ng-model="password"/>
+        <input class="button-primary" type="submit" value="Login"/>
+      </div>
+    </form> -->
+  </div>
+  <div class="row">
+    <a href="/auth"><button class="button-primary">Login with Auth0</button></a>
+  </div>
+  <div class="row">
+    <a href="/auth/logout"><button class="button-primary">Logout</button></a>
+  </div>
+</div>

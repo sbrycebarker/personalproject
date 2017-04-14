@@ -1,5 +1,5 @@
 module.exports = {
-  secret: "igocommando",// Your secret here
+  secret: "things",// Your secret here
   auth0: {
     domain: "subiboi.auth0.com",
     clientID: "SL30WN26oHVALtOYGXB2E8r2CfWyQMYU",
