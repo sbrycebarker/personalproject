@@ -11,7 +11,7 @@ angular.module('myApp')
 
   $scope.loginLocal = function(username, password) {
     console.log('Logging in with', username, password);
-    userService.loginLocal({
+    profileService.loginLocal({
       username: username,
       password: password
     })

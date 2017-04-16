@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+}
+
+.header {
+  position: absolute;
+  height: 100%;
+  width: 100px;
+  background-color: black;
+}
+
+.auth {
+  height: 50px;
+  width: 50px;
+  font-size: 10px;
+}
+
+.auth .button-primary h1 {
+  font-size: 8px;
+}
+
+.row {
+  float: right;
+}
+
+.info {
+  float: right;
+}
+
+.name {
+  float: right;
+}
+
+.connections {
+  float: right;
+}

@@ -7,6 +7,8 @@ const express = require('express'),
       config = require('./config.js'),
       cors = require('cors');
 
+//ECONNREFUSED 127.0.0.1:5432  ????
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -84,7 +86,6 @@ app.get('/auth/callback' ,
 })
 
 app.get('/auth/me', function(req, res) {
-  console.log('works')
   if (!req.user) return res.sendStatus(404);
   res.status(200).send(req.user);
 })
