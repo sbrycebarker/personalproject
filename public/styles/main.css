@@ -1,13 +1,26 @@
 body {
   margin: 0;
+  background: url("../views/img/imperial.jpg") no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
 }
-
+a {
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+  color: white;
+}
 .header {
   position: absolute;
   height: 100%;
   width: 100px;
+  color: white;
   background-color: black;
 }
+
 
 .auth {
   height: 50px;
@@ -17,14 +30,19 @@ body {
 
 .auth .button-primary h1 {
   font-size: 8px;
+  border-radius: 15px;
 }
 
 .row {
   float: right;
+  font-family: sans-serif;
+  font-size: 15px;
+  color: white;
 }
 
 .info {
   float: right;
+  color: white;
 }
 
 .name {
@@ -33,4 +51,5 @@ body {
 
 .connections {
   float: right;
+  color: white;
 }

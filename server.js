@@ -86,13 +86,19 @@ app.get('/auth/callback' ,
 })
 
 app.get('/auth/me', function(req, res) {
-  if (!req.user) return res.sendStatus(404);
+  // if (!req.user) return res.sendStatus(404);
   res.status(200).send(req.user);
 })
+
 
 app.get('/auth/logout', function(req, res) {
   req.logout();
   res.redirect('/')
+})
+
+var media =
+app.get("/media" , function(req, res) {
+  https: "https://api.instagram.com/v1/tags/nofilter/media/recent?access_token=37620940.8ccf638.96228796bf934c5fbf17c8a2394e2a88"
 })
 
 app.listen(3000 , function() {
