@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="./styles/main.css" media="screen" title="no title" charset="utf-8">
 
-<div class="container">
+<div class="container" ng-controller="mainCtrl">
   <div class="row">
     <h1>Hello! {{user}}</h1>
-    <div>FEED 1</div>
+    <div>{{feed}}</div>
     <div>FEED 2</div>
     <div>FEED 3</div>
     <!-- <form ng-submit="loginLocal(username, password)">
@@ -15,7 +15,6 @@
     </form> -->
   </div>
   <div class="main">
-    {{feed}}
   </div>
 </div>
 

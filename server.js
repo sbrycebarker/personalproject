@@ -24,7 +24,7 @@ app.use(passport.session());
 
 app.use(express.static('./public'));
 
-const massiveInstance = massive.connectSync({connectionString: 'postgres://postgres:1234a@localhost/massive_demo'})
+const massiveInstance = massive.connectSync({connectionString: 'postgres://postgres:1234a@localhost/personalproject'})
 // 1234a password
 app.set('db', massiveInstance);
 const db = app.get('db');
@@ -96,9 +96,9 @@ app.get('/auth/logout', function(req, res) {
   res.redirect('/')
 })
 
-var media =
-app.get("/media" , function(req, res) {
-  https: "https://api.instagram.com/v1/tags/nofilter/media/recent?access_token=37620940.8ccf638.96228796bf934c5fbf17c8a2394e2a88"
+app.get("/users/self/media/recent" , function(req, res) {
+  accessToken: "37620940.8ccf638.96228796bf934c5fbf17c8a2394e2a88"
+  clientID: "	8ccf63887ee24df6abe7098f4e7cb65d"
 })
 
 app.listen(3000 , function() {
