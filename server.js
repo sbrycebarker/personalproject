@@ -7,6 +7,8 @@ const express = require('express'),
       config = require('./config.js'),
       cors = require('cors');
 
+var Instafeed = require("instafeed.js");
+
 //ECONNREFUSED 127.0.0.1:5432  ????
 
 const app = express();
@@ -96,9 +98,8 @@ app.get('/auth/logout', function(req, res) {
   res.redirect('/')
 })
 
-app.get("/users/self/media/recent" , function(req, res) {
-  accessToken: "37620940.8ccf638.96228796bf934c5fbf17c8a2394e2a88"
-  clientID: "	8ccf63887ee24df6abe7098f4e7cb65d"
+var feed = new Instafeed({
+  get: 'user'
 })
 
 app.listen(3000 , function() {

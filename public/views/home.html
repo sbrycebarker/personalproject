@@ -1,11 +1,29 @@
 <link rel="stylesheet" href="./styles/main.css" media="screen" title="no title" charset="utf-8">
-
+<script src="./public/instafeed.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var feed = new Instafeed({
+        get: 'user',
+        limit: "1",
+        userId: '37620940',
+        resolution: "thumbnail",
+        clientId: "8ccf63887ee24df6abe7098f4e7cb65d",
+        accessToken: "37620940.8ccf638.96228796bf934c5fbf17c8a2394e2a88"
+    });
+    feed.run();
+</script>
 <div class="container" ng-controller="mainCtrl">
   <div class="row">
     <h1>Hello! {{user}}</h1>
-    <div>{{feed}}</div>
+    <div>{{feed}}FEED 1</div>
     <div>FEED 2</div>
-    <div>FEED 3</div>
+    <div id="wrapper">
+      <div id="insta-wrap">
+        <h1>Instagram Feed</h1>
+        <div id="instafeed">
+        </div>
+
+      </div>
+    </div>
     <!-- <form ng-submit="loginLocal(username, password)">
       <div class="six columns">
         <input class="u-full-width" placeholder="username" ng-model="username"/>
