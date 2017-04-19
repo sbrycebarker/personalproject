@@ -5,7 +5,8 @@ const express = require('express'),
       passport = require('passport'),
       Auth0Strategy = require('passport-auth0'),
       config = require('./config.js'),
-      cors = require('cors');
+      cors = require('cors'),
+      axios = require('axios')
 
 var Instafeed = require("instafeed.js");
 
@@ -101,6 +102,33 @@ app.get('/auth/logout', function(req, res) {
 var feed = new Instafeed({
   get: 'user'
 })
+
+var instagram = require('instagram-node').instagram()
+
+app.use(express.static(__dirname + '/public'));
+
+instagram.use({ access_token: '37620940.8ccf638.96228796bf934c5fbf17c8a2394e2a88' })
+instagram.use({
+  client_id: '8ccf63887ee24df6abe7098f4e7cb65d',
+  client_secret: '6023a14a57f6483faf0c11c500b6b5eb'
+});
+
+app.get('/api/instagram/data', function(req , res){
+axios.get('https://api.instagram.com/v1/users/self/media/recent/?access_token=37620940.8ccf638.96228796bf934c5fbf17c8a2394e2a88')
+.then(function (response) {
+  console.log(response.data);
+  res.json(response.data)
+}).catch(function (error){
+  console.log(error)
+}
+);
+
+// instagram.media_popular(function(err, medias, remaining, limit){
+//   console.log(err)
+//   console.log(medias)
+//   res.send(medias)
+// });
+});
 
 app.listen(3000 , function() {
   console.log("connnected to port 3000")

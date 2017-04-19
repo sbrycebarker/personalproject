@@ -1,14 +1,21 @@
 angular.module('myApp').controller('mainCtrl', function($scope, mainService) {
+  // $scope.getinsta = function() {
+  //   mainService.getinsta().then(function(result) {
+  //     console.log(result)
+  //     $scope.feed = result.data.data
+  //   })
+  // }
 
-  $scope.getinsta = function() {
+  // $scope.getinsta();
+
+  $scope.getinstaimg = function() {
     mainService.getinsta().then(function(result) {
       console.log(result)
-      $scope.feed = result
+      $scope.imgs = result.data.data
     })
   }
 
-  $scope.getinsta();
-
+  $scope.getinstaimg();
 
   // var feed = new Instafeed({
   //     get: 'user',
