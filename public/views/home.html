@@ -19,14 +19,12 @@
     <div id="wrapper">
       <div id="insta-wrap">
         <h1>Instagram Feed</h1>
-        <div class="instafeed" ng-repeat="pic in imgs">
+        <div class="instafeed" ng-repeat="post in feed">
           <ul>
-          <div class="img">
-            <a>
-              <img ng-src="{{pic.url">
-               {{pic}}</a>
-          </div>
-        </ul>
+            <div class="img">
+              <a><img ng-src="{{post.images.thumbnail.url}}"></a>
+            </div>
+          </ul>
         </div>
 
       </div>
