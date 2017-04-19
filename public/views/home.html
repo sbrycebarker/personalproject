@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="./styles/main.css" media="screen" title="no title" charset="utf-8">
-<script src="./public/instafeed.min.js" type="text/javascript"></script>
+<script src="./instafeed.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     var feed = new Instafeed({
         get: 'user',
-        limit: "1",
+        limit: "16",
         userId: '37620940',
         resolution: "thumbnail",
         clientId: "8ccf63887ee24df6abe7098f4e7cb65d",
@@ -14,7 +14,7 @@
 <div class="container" ng-controller="mainCtrl">
   <div class="row">
     <h1>Hello! {{user}}</h1>
-    <div>{{feed}}FEED 1</div>
+    <div>FEED 1</div>
     <div>FEED 2</div>
     <div id="wrapper">
       <div id="insta-wrap">
