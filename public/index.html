@@ -7,6 +7,26 @@
 
 </head>
 <body>
+  <!-- <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1329918227073215',
+      xfbml      : true,
+      version    : 'v2.9'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script> -->
+
+
   <div class="header">
 
   <a ui-sref="home">home</a>
@@ -30,6 +50,8 @@
 {{feed}}
 
 <ui-view><ui-view>
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.js"></script>

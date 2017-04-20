@@ -6,7 +6,8 @@ const express = require('express'),
       Auth0Strategy = require('passport-auth0'),
       config = require('./config.js'),
       cors = require('cors'),
-      axios = require('axios')
+      axios = require('axios'),
+      facebook = require('passport-facebook')
 
 var Instafeed = require("instafeed.js");
 
@@ -27,7 +28,7 @@ app.use(passport.session());
 
 app.use(express.static('./public'));
 
-const massiveInstance = massive.connectSync({connectionString: 'postgres://postgres:1234a@localhost/personalproject'})
+const massiveInstance = massive.connectSync({connectionString: 'postgres://postgres:1234a@localhost/massive_demo'})
 // 1234a password
 app.set('db', massiveInstance);
 const db = app.get('db');
@@ -106,6 +107,12 @@ var feed = new Instafeed({
 var instagram = require('instagram-node').instagram()
 
 app.use(express.static(__dirname + '/public'));
+
+// facebook.use({
+//   app_id: '1329918227073215'
+//   client_secret: '6cb93f7b6342e45060bd03aecff7253e'
+//   access_token: 'EAACEdEose0cBAA0lzfeS5lBAfAZAySPZBd0BnSbGcvehxPxvyviJMkOqZBlITKcxt9UN8VTfS2V2ryALlgpKBXW9aRcMFUNfabFhbmN2P7TRCkZCxbbU3XOxoLYyPMfotKhiiPfUCZAhRfvOU6mv6bybYoVHtWMQrDzcrhipHT4ySlbqgAU62aKYlnJDiRfMZD'
+// })
 
 instagram.use({ access_token: '37620940.8ccf638.96228796bf934c5fbf17c8a2394e2a88' })
 instagram.use({
