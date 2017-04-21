@@ -17,10 +17,9 @@
     <div>FEED 1</div>
     <div>FEED 2</div>
 
-        <h1>Instagram Feed</h1>
-        <div class="instafeed" ng-repeat="post in feed | limitTo: 5" >
+        <h1>Instagram</h1>
+        <div class="img-con" ng-repeat="post in instafeed | limitTo: 5" >
 
-              <div class="img-con">
                 <a href="{{post.link}}"><img ng-src="{{post.images.standard_resolution.url}}" style="height: 50px; width: 50px;"></a>
               </div>
         </div>

@@ -7,7 +7,8 @@ const express = require('express'),
       config = require('./config.js'),
       cors = require('cors'),
       axios = require('axios'),
-      facebook = require('passport-facebook')
+      facebook = require('passport-facebook'),
+      request = require('request')
 
 var Instafeed = require("instafeed.js");
 
@@ -33,7 +34,7 @@ const massiveInstance = massive.connectSync({connectionString: 'postgres://postg
 app.set('db', massiveInstance);
 const db = app.get('db');
 
-
+let facebookAccessToken;
 passport.use(new Auth0Strategy({
   domain: config.auth0.domain,
   clientID: config.auth0.clientID,
@@ -43,13 +44,14 @@ passport.use(new Auth0Strategy({
 
 function(accessToken, refreshToken, extraParams, profile, done) {
   //Find user in database
+  // console.log(accessToken)
   db.getUserByAuthId([profile.id], function(err, user) {
     user = user[0];
     if (!user) {
       console.log('CREATING USER');
       db.createUserByAuth([profile.displayName, profile.id], function(err, user) {
         console.log(err)
-        console.log('USER CREATED', userA);
+        console.log('USER CREATED', user);
         return done(err, user[0]);
       })
     } else {
@@ -57,12 +59,25 @@ function(accessToken, refreshToken, extraParams, profile, done) {
       return done(err, user);
     }
   })
+
+  var options = { method: 'GET',
+    url: `https://subiboi.auth0.com/api/v2/users/facebook|10155007329121093`,
+    headers: { authorization: `Bearer ${config.token}` } };
+
+  request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+
+    // console.log(JSON.parse(body))
+    let res = JSON.parse(body);
+    facebookAccessToken = res.identities[0].access_token;
+  });
+
 }
 ));
 
 
 passport.serializeUser(function(userA, done) {
-  console.log('serializing' , userA);
+  // console.log('serializing' , userA);
   var userB = userA;
 
   done(null, userB)
@@ -108,11 +123,19 @@ var instagram = require('instagram-node').instagram()
 
 app.use(express.static(__dirname + '/public'));
 
-// facebook.use({
-//   app_id: '1329918227073215'
-//   client_secret: '6cb93f7b6342e45060bd03aecff7253e'
-//   access_token: 'EAACEdEose0cBAA0lzfeS5lBAfAZAySPZBd0BnSbGcvehxPxvyviJMkOqZBlITKcxt9UN8VTfS2V2ryALlgpKBXW9aRcMFUNfabFhbmN2P7TRCkZCxbbU3XOxoLYyPMfotKhiiPfUCZAhRfvOU6mv6bybYoVHtWMQrDzcrhipHT4ySlbqgAU62aKYlnJDiRfMZD'
-// })
+app.get('/api/facebook/data', function(req , res){
+console.log(facebookAccessToken)
+var tempToken = 'EAACEdEose0cBADRGLB7qHJlOqFpv30vPdf79LXZBRoNo0USqVnLxyXLfFo375qC08zwzKwoi4K6ubl10qsjtkqQKisPybuw7GYuIDbef6DM8QimZAEgVY4SLjeYyMAcZBZAkQleV275CVAirUCvUu6H2dlMY3ogtClt336574OnVifs0OfSK6RF78wZBabkkZD'
+axios.get('https://graph.facebook.com/v2.9/me?fields=id%2Cname%2Clocation%2Cposts%2Cphotos&access_token=' + facebookAccessToken)
+.then(function (response) {
+  console.log(response.data);
+  res.json(response.data)
+}).catch(function (error){
+  // console.log(error)
+});
+});
+
+// "https://graph.facebook.com/v2.9/me?fields=id%2Cname%2Clocation%2Cposts%2Cphotos&access_token=EAACEdEose0cBAJAZCEfFcE8HaOX5d50mPsv0DzwkaZCZAcwacaMfZCJlhDryLBGkiNPweYvdFt1BZCpzgvso1dee4KNgZAZBA7AOWsB7N0rs9gZBhOLNeammhKbkQ2gdmeZA78J4udClxfCBFbhP45bknVKTjpef2pBkLe67ngKTtMjBgW0SgF6Vpk61MpUTrfKEZD"
 
 instagram.use({ access_token: '37620940.8ccf638.96228796bf934c5fbf17c8a2394e2a88' })
 instagram.use({
@@ -123,18 +146,13 @@ instagram.use({
 app.get('/api/instagram/data', function(req , res){
 axios.get('https://api.instagram.com/v1/users/self/media/recent/?access_token=37620940.8ccf638.96228796bf934c5fbf17c8a2394e2a88')
 .then(function (response) {
-  console.log(response.data);
+  // console.log(response.data);
   res.json(response.data)
 }).catch(function (error){
-  console.log(error)
+  // console.log(error)
 }
 );
 
-// instagram.media_popular(function(err, medias, remaining, limit){
-//   console.log(err)
-//   console.log(medias)
-//   res.send(medias)
-// });
 });
 
 app.listen(3000 , function() {

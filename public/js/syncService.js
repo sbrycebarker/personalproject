@@ -1,3 +1,3 @@
-angular.module('myApp').service('profileService', function() {
+angular.module('myApp').service('syncService', function() {
 
 })
