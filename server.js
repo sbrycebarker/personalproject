@@ -67,8 +67,9 @@ function(accessToken, refreshToken, extraParams, profile, done) {
   request(options, function (error, response, body) {
     if (error) throw new Error(error);
 
-    // console.log(JSON.parse(body))
+    console.log(res)
     let res = JSON.parse(body);
+    console.log(JSON.parse(body))
     facebookAccessToken = res.identities[0].access_token;
   });
 
@@ -131,7 +132,7 @@ axios.get('https://graph.facebook.com/v2.9/me?fields=id%2Cname%2Clocation%2Cpost
   console.log(response.data);
   res.json(response.data)
 }).catch(function (error){
-  // console.log(error)
+  console.log(error)
 });
 });
 
