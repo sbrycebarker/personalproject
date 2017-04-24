@@ -61,16 +61,14 @@ function(accessToken, refreshToken, extraParams, profile, done) {
   })
 
   var options = { method: 'GET',
-    url: `https://subiboi.auth0.com/api/v2/users/facebook|10155007329121093`,
+    url: `https://subiboi.auth0.com/api/v2/users/facebook|10152366254636093`,
     headers: { authorization: `Bearer ${config.token}` } };
 
   request(options, function (error, response, body) {
     if (error) throw new Error(error);
+    console.log(body)
 
-    console.log(res)
-    let res = JSON.parse(body);
-    console.log(JSON.parse(body))
-    facebookAccessToken = res.identities[0].access_token;
+    // facebookAccessToken = res.identities[0].access_token;
   });
 
 }
@@ -125,14 +123,14 @@ var instagram = require('instagram-node').instagram()
 app.use(express.static(__dirname + '/public'));
 
 app.get('/api/facebook/data', function(req , res){
-console.log(facebookAccessToken)
-var tempToken = 'EAACEdEose0cBADRGLB7qHJlOqFpv30vPdf79LXZBRoNo0USqVnLxyXLfFo375qC08zwzKwoi4K6ubl10qsjtkqQKisPybuw7GYuIDbef6DM8QimZAEgVY4SLjeYyMAcZBZAkQleV275CVAirUCvUu6H2dlMY3ogtClt336574OnVifs0OfSK6RF78wZBabkkZD'
-axios.get('https://graph.facebook.com/v2.9/me?fields=id%2Cname%2Clocation%2Cposts%2Cphotos&access_token=' + facebookAccessToken)
+// console.log(facebookAccessToken)
+var tempToken = 'EAACEdEose0cBADcM84eVLjig4IwD4pmofttKST6kjrAzRry8iuX4e78Sy3ZCpGzm1MKzFeNHuC7h0BgAFsMZCDFZCDTJiKVWeALoLZAt5LrageRSSszAHX1AWWMxt2GLfH9gLmqaz9bUkoktNDR6fju8ObYwRgRtTxtqMksWR4koBw8VLn1OeMnjTZAOIi1kZD'
+axios.get('https://graph.facebook.com/v2.9/me?fields=id%2Cname%2Clocation%2Cposts%2Cphotos&access_token=' + tempToken)
 .then(function (response) {
-  console.log(response.data);
+  // console.log(response.data);
   res.json(response.data)
 }).catch(function (error){
-  console.log(error)
+  // console.log(error)
 });
 });
 

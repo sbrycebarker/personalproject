@@ -8,10 +8,13 @@ background-size: cover;
 }
 h1 {
   position: relative;
-  margin: 0;
+  margin: 10px;
 }
 a {
   text-decoration: none;
+  margin: 0;
+  height: 50px;
+  width: 100px;
 }
 a:visited {
   text-decoration: none;
@@ -19,65 +22,115 @@ a:visited {
 }
 .header {
   position: absolute;
-  height: 100%;
-  width: 150px;
+  display: inline-flex;
+  height: 100px;
+  width: 100%;
   color: white;
   background-color: black;
   font-family: sans-serif;
+  margin: 0;
 }
+@media (min-width: 450px ) and (max-width: 650px) {
+  .header {
+    height: 100%;
+    width: 100px;
+  }
+}
+
+@media (min-width: 450px ) and (max-width: 650px) {
+  .button-primary {
+    position: relative;
+    height: 25px;
+    width: 60px;
+    margin: 0px;
+    background-image: linear-gradient( to right, red, grey );
+    border-radius: 15px;
+  }
+  .clicks {
+    position: absolute;
+    top: 200px;
+    left: 20px;
+  }
+  .row {
+    position: relative;
+    background-color: black;
+    height: 425px;
+    width: 350px;
+    font-family: sans-serif;
+    font-size: 15px;
+    top: 175px;
+    left: 125px;
+    color: white;
+    display: inline-block;
+    border-radius: 25px;
+  }
+}
+
 .item {
   display: flex;
   flex-flow: column;
   position: relative;
   height: auto;
-  width: 60px;
   margin: 5px;
-  margin-left: 1px;
+  text-decoration: underline;
 }
-
-
-
+@media (max-width: 450px){
 .auth {
-  height: 30%;
-  width: 15%;
+  position: relative;
+  display: inline-flex;
+  height: 25px;
+  width: 60px;
   font-size: 10px;
+  top: 50px;
+  right: -100px;
+  margin: 0 10px 10px 0;
 }
-
 .button-primary {
   height: 25px;
-  width: 5em;
+  width: 100px;
   margin: 0px;
-  background-color: #365899;
-}
-
-.auth .button-primary h1 {
-  font-size: 8px;
+  background-image: linear-gradient( to right, red, grey );
   border-radius: 15px;
 }
-
 .row {
   position: relative;
   background-color: black;
-  height: 700px;
-  width: 600px;
+  height: 425px;
+  width: 350px;
   font-family: sans-serif;
   font-size: 15px;
-  top: 75px;
-  left: 250px;
+  top: 175px;
+  left: 25px;
   color: white;
   display: inline-block;
   border-radius: 25px;
 }
+
+}
+.auth .button-primary h1 {
+  font-size: 8px;
+  border-radius: 15px;
+  margin: auto;
+}
+
+.feeds {
+  margin: 10px;
+}
+
+
 .img-con {
+  margin-left: 10px;
+}
+.imgs {
   position: relative;
   display: inline-block;
   margin: 5px;
-  height: 50px;
-  width: 50px;
+  height: 100px;
+  width: 100px;
 }
 img {
-  height: 75px;
-  width: 75px;
+  height: 100px;
+  width: 100px;
 }
 
 .info {
@@ -103,4 +156,39 @@ img {
   display: block;
   height: 25px;
   width: 25px;
+}
+
+@media (min-width: 650px) {
+  .row {
+    position: relative;
+    background-color: black;
+    height: 425px;
+    width: 350px;
+    font-family: sans-serif;
+    font-size: 15px;
+    top: 175px;
+    left: 225px;
+    color: white;
+    display: inline-block;
+    border-radius: 25px;
+  }
+  .header {
+    height: 100%;
+    width: 150px;
+  }
+  .button-primary {
+    position: relative;
+    height: 25px;
+    width: 60px;
+    margin: 0px;
+    background-image: linear-gradient( to right, red, grey );
+    border-radius: 15px;
+
+  }
+  .clicks {
+    position: absolute;
+    top: 200px;
+    left: 20px;
+  }
+
 }
